@@ -37,6 +37,14 @@ export default function Navbar() {
               Registro
             </a>
           </li>
+          <li>
+            <a
+              href="/meu-perfil"
+              className="px-4 py-2 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition"
+            >
+              Meu Perfil
+            </a>
+          </li>
         </ul>
 
         {/* MENU MOBILE */}

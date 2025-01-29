@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthRouter from "./AuthRouter";
-import DashboardLayout from "../components/dashboard-layout";
-import CriarProdutos from "../components/criar-produtos";
+import DashboardLayout from "../components/components-admin/dashboard-layout";
+import CriarProdutos from "../components/components-data/criar-produtos";
+
 
 export default function RotasProtegidas() {
   return (
