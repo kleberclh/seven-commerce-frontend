@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+/* Estilizar toda a barra de rolagem */
+::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+    height: 8px; /* Altura para rolagem horizontal */
+  }
+  
+  /* Estilizar o trilho (fundo da barra de rolagem) */
+  ::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Cor do trilho */
+    border-radius: 10px; /* Bordas arredondadas */
+  }
+  
+  /* Estilizar o "polegar" (a parte que se move) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray-900); /* Cor do polegar */
+    border-radius: 10px; /* Bordas arredondadas */
+  }
+  
+  /* Estilizar o polegar ao passar o mouse */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor ao passar o mouse */
+  }
+  

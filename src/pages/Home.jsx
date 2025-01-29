@@ -1,5 +1,13 @@
 import React from "react";
-
+import Navbar from "../components/components-page/Navbar";
+import Carrousel from "../components/components-page/Carrousel";
+import Produtos from "../components/components-page/Produtos";
+import Layout from "../components/Layout";
 export default function Home() {
-  return <h1 class="text-3xl font-bold underline text-red-700">Hello world!</h1>;
+  return (
+    <>
+      <Carrousel />
+      <Produtos />
+    </>
+  );
 }
