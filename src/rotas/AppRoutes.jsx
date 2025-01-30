@@ -23,7 +23,7 @@ export default function AppRoutes() {
         </Route>
 
         {/* rotas protegidas */}
-        <Route path="/*" element={<RotasProtegidas />} />
+        <Route path="/auth/*" element={<RotasProtegidas />} />
       </Routes>
     </Router>
   );

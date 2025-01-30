@@ -2,21 +2,32 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthRouter from "./AuthRouter";
 import DashboardLayout from "../components/components-admin/dashboard-layout";
-import CriarProdutos from "../components/components-data/criar-produtos";
-
+import Produto from "../pages/admin/Produto";
+import Clientes from "../pages/admin/Clientes";
+import Vendas from "../pages/admin/Vendas";
+import Relatorios from "../pages/admin/Relatorios";
+import Configuracoes from "../pages/admin/Configuracoes";
 
 export default function RotasProtegidas() {
   return (
     <Routes>
+      {/* Layout encapsulando todas as rotas protegidas */}
       <Route
-        path="/auth/dashboard"
+        path="/"
         element={
           <AuthRouter>
             <DashboardLayout />
           </AuthRouter>
         }
-      />
-      <Route path="/criar-produtos" element={<CriarProdutos />} />
+      >
+        {/* Definir as rotas internas */}
+        <Route path="dashboard" element={<Produto />} />
+        <Route path="criar-produtos" element={<Produto />} />
+        <Route path="clientes" element={<Clientes />} />
+        <Route path="vendas" element={<Vendas />} />
+        <Route path="relatorios" element={<Relatorios />} />
+        <Route path="configuracoes" element={<Configuracoes />} />
+      </Route>
     </Routes>
   );
 }

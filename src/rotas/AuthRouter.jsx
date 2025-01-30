@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // Correção da importação
+import { jwtDecode } from "jwt-decode";
 
 const AuthRouter = ({ children }) => {
   const token = localStorage.getItem("token");
@@ -11,13 +11,15 @@ const AuthRouter = ({ children }) => {
   try {
     const decoded = jwtDecode(token);
 
-    if (decoded.isAdmin) {
+    // Verifica se o usuário é admin
+    if (decoded?.isAdmin) {
       return children;
     } else {
+      console.warn("Acesso negado: Usuário não é administrador.");
       return <Navigate to="/" replace />;
     }
   } catch (error) {
-    console.error("Token inválido:", error);
+    console.error("Erro ao decodificar o token:", error);
     return <Navigate to="/" replace />;
   }
 };
