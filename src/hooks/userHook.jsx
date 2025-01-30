@@ -6,12 +6,20 @@ export const userHook = () => {
   const login = async (email, password) => {
     try {
       const response = await api.post("/login", { email, password });
-      const { id, token, nome, uuid, user: loggedUser } = response.data;
+      const {
+        isAdmin,
+        userId,
+        token,
+        name,
+        user_uuid,
+        user: loggedUser,
+      } = response.data;
 
-      localStorage.setItem("id", id);
+      localStorage.setItem("id", userId);
       localStorage.setItem("token", token);
-      localStorage.setItem("nome", nome);
-      localStorage.setItem("uuid", uuid);
+      localStorage.setItem("name", name);
+      localStorage.setItem("uuid", user_uuid);
+      localStorage.setItem("adm", isAdmin);
       setUser(loggedUser);
     } catch (error) {
       console.error("Erro ao fazer login", error);

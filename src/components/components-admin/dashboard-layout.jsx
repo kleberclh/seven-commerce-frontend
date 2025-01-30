@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function DashboardLayout() {
   return (
-    <div>D</div>
+    <div>Daaaaaa</div>
   )
 }

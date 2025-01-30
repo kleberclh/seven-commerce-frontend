@@ -16,7 +16,7 @@ export default function RotasProtegidas() {
           </AuthRouter>
         }
       />
-      <Route path="criar-produtos" element={<CriarProdutos />} />
+      <Route path="/criar-produtos" element={<CriarProdutos />} />
     </Routes>
   );
 }
