@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api/axios";
 
-export default function ListProducts() {
-  const [produtos, setProdutos] = useState([]);
+export default function ListClients() {
+  const [usuarios, setusuarios] = useState([]);
 
   useEffect(() => {
     api
-      .get("/produtos")
+      .get("/usuarios")
       .then((response) => {
-        setProdutos(response.data.produto);
+        console.log("Dados recebidos:", response.data.data); // Debug
+        setusuarios(response.data.data);
       })
       .catch((error) => {
-        console.error("Erro ao buscar produtos:", error);
+        console.error("Erro ao buscar os usuarios:", error);
       });
   }, []);
-
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Lista de Produtos
+          Lista de Clientes
         </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow">
@@ -29,38 +29,24 @@ export default function ListProducts() {
                   ID
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
-                  Título
+                  Nome
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
-                  Descrição
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
-                  Preço (R$)
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
-                  Quantidade
+                  E-Mail
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {produtos.map((produto) => (
+              {usuarios.map((usuario) => (
                 <tr
-                  key={produto.id}
+                  key={usuario.id}
                   className="hover:bg-gray-100 transition duration-300"
                 >
-                  <td className="px-6 py-4 text-gray-800">{produto.id}</td>
+                  <td className="px-6 py-4 text-gray-800">{usuario.id}</td>
                   <td className="px-6 py-4 text-gray-900 font-medium">
-                    {produto.titulo}
+                    {usuario.name}
                   </td>
-                  <td className="px-6 py-4 text-gray-700">
-                    {produto.descricao}
-                  </td>
-                  <td className="px-6 py-4 text-green-600 font-semibold">
-                    R$ {produto.preco.toFixed(2)}
-                  </td>
-                  <td className="px-6 py-4 text-gray-800">
-                    {produto.quantidade}
-                  </td>
+                  <td className="px-6 py-4 text-gray-700">{usuario.email}</td>
                 </tr>
               ))}
             </tbody>
