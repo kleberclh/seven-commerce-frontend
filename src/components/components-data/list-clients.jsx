@@ -16,7 +16,7 @@ export default function ListClients() {
       });
   }, []);
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Lista de Clientes
@@ -33,6 +33,12 @@ export default function ListClients() {
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
                   E-Mail
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
+                  CPF
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
+                  Telefone
                 </th>
               </tr>
             </thead>

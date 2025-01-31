@@ -16,7 +16,7 @@ export default function ListProducts() {
   }, []);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl p-6">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Lista de Produtos
