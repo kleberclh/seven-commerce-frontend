@@ -7,6 +7,7 @@ import Clientes from "../pages/admin/Clientes";
 import Vendas from "../pages/admin/Vendas";
 import Relatorios from "../pages/admin/Relatorios";
 import Configuracoes from "../pages/admin/Configuracoes";
+import ListDashboard from "../components/components-data/list-dashboard";
 
 export default function RotasProtegidas() {
   return (
@@ -21,7 +22,7 @@ export default function RotasProtegidas() {
         }
       >
         {/* Definir as rotas internas */}
-        <Route path="dashboard" element={<Produto />} />
+        <Route path="dashboard" element={<ListDashboard />} />
         <Route path="criar-produtos" element={<Produto />} />
         <Route path="clientes" element={<Clientes />} />
         <Route path="vendas" element={<Vendas />} />
