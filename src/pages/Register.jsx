@@ -27,6 +27,7 @@ export default function Register() {
         <h1 className="text-2xl font-bold text-center mb-4">Register</h1>
 
         <form className="flex flex-col space-y-4" onSubmit={handleRegister}>
+          <span></span>
           <Input
             type="text"
             placeholder="Digite seu Nome"
@@ -49,7 +50,7 @@ export default function Register() {
             required
           />
           <Button type="submit" className="w-full">
-            Entrar
+            Registrar
           </Button>
         </form>
       </div>
