@@ -27,5 +27,16 @@ export const userHook = () => {
     }
   };
 
-  return { login };
+  const register = async (name, email, password) => {
+    try {
+      const response = await api.post("/registrar", { name, email, password });
+      const { user: registeredUser } = response.data;
+      setUser(registeredUser);
+    } catch (error) {
+      console.error("Erro ao fazer o registro", error);
+      throw error;
+    }
+  };
+
+  return { login, register };
 };
