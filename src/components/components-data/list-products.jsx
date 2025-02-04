@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api/axios";
 
 export default function ListProducts() {
   const [produtos, setProdutos] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    fetchProdutos();
+  }, []);
+
+  const fetchProdutos = () => {
     api
       .get("/produtos")
       .then((response) => {
@@ -13,7 +19,22 @@ export default function ListProducts() {
       .catch((error) => {
         console.error("Erro ao buscar produtos:", error);
       });
-  }, []);
+  };
+
+  const handleDelete = async (uuid) => {
+    if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
+
+    try {
+      await api.delete(`/produto/${uuid}`);
+      setProdutos(produtos.filter((produto) => produto.uuid !== uuid));
+    } catch (error) {
+      console.error("Erro ao excluir produto:", error);
+    }
+  };
+
+  const handleEdit = (uuid) => {
+    navigate(`/auth/editar-produto/${uuid}`);
+  };
 
   return (
     <div className="p-6 bg-gray-100">
@@ -21,6 +42,14 @@ export default function ListProducts() {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Lista de Produtos
         </h2>
+        <div className="mb-5">
+          <button
+            onClick={() => navigate("/auth/novo-produto")}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+          >
+            Novo Produto
+          </button>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow">
             <thead className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
@@ -39,6 +68,12 @@ export default function ListProducts() {
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
                   Quantidade
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
+                  Editar
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
+                  Excluir
                 </th>
               </tr>
             </thead>
@@ -60,6 +95,22 @@ export default function ListProducts() {
                   </td>
                   <td className="px-6 py-4 text-gray-800">
                     {produto.quantidade}
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">
+                    <button
+                      onClick={() => handleEdit(produto.uuid)}
+                      className="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700"
+                    >
+                      ✏️
+                    </button>
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">
+                    <button
+                      onClick={() => handleDelete(produto.uuid)}
+                      className="px-4 py-2 text-sm font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700"
+                    >
+                      ❌
+                    </button>
                   </td>
                 </tr>
               ))}
