@@ -19,7 +19,7 @@ export default function EditProduct() {
       .get(`/produto/${uuid}`)
       .then((response) => {
         
-        console.log("Resposta da API:", response.data); 
+        
         setProduto({
           titulo: response.data.data.titulo || "",
           descricao: response.data.data.descricao || "",
@@ -34,9 +34,7 @@ export default function EditProduct() {
       });
   }, [uuid]);
 
-  useEffect(() => {
-    console.log("Produto carregado:", produto); 
-  }, [produto]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -25,7 +25,7 @@ export default function ListProducts() {
     if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
 
     try {
-      await api.delete(`/produtos/${uuid}`);
+      await api.delete(`/produto/${uuid}`);
       setProdutos(produtos.filter((produto) => produto.uuid !== uuid));
     } catch (error) {
       console.error("Erro ao excluir produto:", error);
@@ -42,6 +42,14 @@ export default function ListProducts() {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Lista de Produtos
         </h2>
+        <div className="mb-5">
+          <button
+            onClick={() => navigate("/auth/novo-produto")}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+          >
+            Novo Produto
+          </button>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow">
             <thead className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
@@ -72,10 +80,10 @@ export default function ListProducts() {
             <tbody className="divide-y divide-gray-200">
               {produtos.map((produto) => (
                 <tr
-                  key={produto.uuid}
+                  key={produto.id}
                   className="hover:bg-gray-100 transition duration-300"
                 >
-                  <td className="px-6 py-4 text-gray-800">{produto.uuid}</td>
+                  <td className="px-6 py-4 text-gray-800">{produto.id}</td>
                   <td className="px-6 py-4 text-gray-900 font-medium">
                     {produto.titulo}
                   </td>
