@@ -10,6 +10,7 @@ import Configuracoes from "../pages/admin/Configuracoes";
 import ListDashboard from "../components/components-data/list-dashboard";
 import EditProduct from "../components/components-data/edit-produto";
 import CreateProduto from "../components/components-data/create-produto";
+import ViewDetails from "../components/components-data/view-details";
 
 export default function RotasProtegidas() {
   return (
@@ -32,6 +33,7 @@ export default function RotasProtegidas() {
         <Route path="configuracoes" element={<Configuracoes />} />
         <Route path="editar-produto/:uuid" element={<EditProduct />} />
         <Route path="novo-produto" element={<CreateProduto />} />
+        <Route path="ver-detalhes/:uuid" element={<ViewDetails />} />
       </Route>
     </Routes>
   );
