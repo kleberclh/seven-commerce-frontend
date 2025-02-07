@@ -1,59 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useCart } from "../../context/CartContext";
+import axios from "axios";
 
-const products = [
-  {
-    id: 1,
-    name: "Headphone Bluetooth",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    name: "Smartwatch X-Pro",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 3,
-    name: "Smartwatch X-Pro",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 4,
-    name: "Smartwatch X-Pro",
-    image: "https://via.placeholder.com/150",
-  },
-];
+export default function Produtos() {
+  const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();
 
-const ProductCard = ({ name, image }) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/produtos")
+      .then((response) => {
+        if (response.data.success && Array.isArray(response.data.produto)) {
+          setProducts(response.data.produto);
+        }
+      })
+      .catch((error) => console.error("Erro ao buscar produtos:", error));
+  }, []);
+
   return (
-    <div className="border w-56 bg-gradient-to-br from-gray-800 to-gray-900 p-5 rounded-xl shadow-lg text-white">
-      <img
-        src={image}
-        alt={name}
-        className="w-full h-36 object-cover rounded-md"
-      />
-      <h3 className="mt-3 text-center text-lg font-semibold">{name}</h3>
-      <button className="w-full mt-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 hover:scale-105 transition-all">
-        Adicionar ao Carrinho
-      </button>
-    </div>
-  );
-};
-
-const ProductList = () => {
-  return (
-    <div className="text-center">
-        <h1 className="mt-10 text-3xl">Produtos em Destaque</h1>
-      <div className="flex gap-8 justify-center mt-20">
+    <div className="max-w-7xl mx-auto p-4 ml-80">
+      <h2 className="text-2xl font-bold mb-4">Produtos</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            image={product.image}
-          />
+          <div key={product.id} className="bg-gray-800 p-4 rounded shadow-md">
+            <h3 className="text-white text-lg">{product.titulo}</h3>
+            <p className="text-gray-400">
+              {/* Verifique se o preço é um número válido antes de exibir */}
+              R$ {isNaN(product.preco) ? "Preço inválido" : product.preco.toFixed(2)}
+            </p>
+            <button
+              onClick={() => addToCart(product)}
+              className="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500"
+            >
+              Adicionar ao Carrinho
+            </button>
+          </div>
         ))}
       </div>
     </div>
   );
-};
-
-export default ProductList;
+}

@@ -8,6 +8,7 @@ import Sobre from "../pages/Sobre";
 import Contato from "../pages/Contato";
 import Layout from "../components/components-page/Layout";
 import Perfil from "../pages/Perfil";
+import Checkout from "../pages/Checkout";
 
 export default function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ export default function AppRoutes() {
           <Route path="sobre" element={<Sobre />} />
           <Route path="contato" element={<Contato />} />
           <Route path="meu-perfil" element={<Perfil />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
 
         {/* rotas protegidas */}
