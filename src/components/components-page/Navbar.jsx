@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa"; // Ícones do menu
+import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { useCart } from "../../context/CartContext";
+import CartSidebar from "./CartSidebar";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const { cart } = useCart();
 
   return (
     <header className="w-full bg-gray-900 shadow-md text-gray-300">
       <nav className="flex justify-between items-center max-w-7xl mx-auto p-4">
-        {/* LOGO */}
         <h1 className="text-2xl font-bold text-white">Seven Commerce</h1>
 
-        {/* MENU DESKTOP */}
         <ul className="hidden md:flex gap-8 text-lg">
           <li className="hover:text-white transition">
             <a href="/">Home</a>
@@ -21,82 +23,32 @@ export default function Navbar() {
           <li className="hover:text-white transition">
             <a href="/contato">Contato</a>
           </li>
-          <li>
-            <a
-              href="/login"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition"
-            >
-              Login
-            </a>
+          <li className="hover:text-white transition">
+            <a href="/login">Login</a>
+          </li>
+          <li className="hover:text-white transition">
+            <a href="/meu-perfil">Meu Perfil</a>
           </li>
           <li>
-            <a
-              href="/register"
-              className="px-4 py-2 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition"
-            >
-              Registro
-            </a>
-          </li>
-          <li>
-            <a
-              href="/meu-perfil"
-              className="px-4 py-2 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition"
-            >
-              Meu Perfil
-            </a>
+            <button className="relative" onClick={() => setCartOpen(!cartOpen)}>
+              <FaShoppingCart className="text-2xl text-white" />
+              {cart.length > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white text-xs px-2 rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </button>
           </li>
         </ul>
 
-        {/* MENU MOBILE */}
+        {cartOpen && <CartSidebar />}
+
         <button
           className="md:hidden text-white text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
-
-        {/* MENU MOBILE (TOGGLABLE) */}
-        {menuOpen && (
-          <ul className="absolute top-14 left-0 w-full bg-gray-900 p-5 flex flex-col items-center gap-4 md:hidden">
-            <li>
-              <a href="/" className="block py-2 hover:text-white transition">
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about"
-                className="block py-2 hover:text-white transition"
-              >
-                Sobre
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact"
-                className="block py-2 hover:text-white transition"
-              >
-                Contato
-              </a>
-            </li>
-            <li>
-              <a
-                href="/login"
-                className="block py-2 bg-blue-600 text-white rounded-md w-full text-center hover:bg-blue-500 transition"
-              >
-                Login
-              </a>
-            </li>
-            <li>
-              <a
-                href="/register"
-                className="block py-2 border border-blue-600 rounded-md w-full text-center hover:bg-blue-600 hover:text-white transition"
-              >
-                Registrar
-              </a>
-            </li>
-          </ul>
-        )}
       </nav>
     </header>
   );
