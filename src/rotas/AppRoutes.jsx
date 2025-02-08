@@ -9,6 +9,7 @@ import Contato from "../pages/Contato";
 import Layout from "../components/components-page/Layout";
 import Perfil from "../pages/Perfil";
 import Checkout from "../pages/Checkout";
+import Sucesso from "../pages/Sucesso";
 
 export default function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export default function AppRoutes() {
           <Route path="contato" element={<Contato />} />
           <Route path="meu-perfil" element={<Perfil />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="sucesso" element={<Sucesso />} />
         </Route>
 
         {/* rotas protegidas */}

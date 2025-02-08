@@ -7,16 +7,21 @@ const CheckoutButton = ({ produtos }) => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("token"); // Se usa autenticação JWT
       const response = await axios.post(
-        "http://localhost:5000/api/checkout",
-        { produtos },
-        { headers: { Authorization: `Bearer ${token}` } }
+        "http://localhost:5000/stripe/checkout",
+        {
+          produtos: produtos.map((item) => ({
+            produtoId: item.id,
+            quantidade: item.quantity, // Certifique-se de que `quantity` é o nome correto
+          })),
+        }
       );
-      window.location.href = response.data.url; // Redireciona para Stripe Checkout
+
+      if (response.data.url) {
+        window.location.href = response.data.url; // Redireciona para o Stripe
+      }
     } catch (error) {
-      console.error("Erro ao criar checkout:", error);
-      alert("Erro ao processar pagamento!");
+      console.error("Erro ao iniciar checkout:", error);
     } finally {
       setLoading(false);
     }
@@ -24,11 +29,11 @@ const CheckoutButton = ({ produtos }) => {
 
   return (
     <button
-      className="bg-blue-500 text-white py-2 px-4 rounded"
       onClick={handleCheckout}
+      className="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50"
       disabled={loading}
     >
-      {loading ? "Processando..." : "Comprar"}
+      {loading ? "Processando..." : "Finalizar Compra"}
     </button>
   );
 };
