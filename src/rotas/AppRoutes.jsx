@@ -10,6 +10,7 @@ import Layout from "../components/components-page/Layout";
 import Perfil from "../pages/Perfil";
 import Checkout from "../pages/Checkout";
 import Sucesso from "../pages/Sucesso";
+import Cancel from "../pages/Cancel";
 
 export default function AppRoutes() {
   return (
@@ -23,7 +24,8 @@ export default function AppRoutes() {
           <Route path="contato" element={<Contato />} />
           <Route path="meu-perfil" element={<Perfil />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="sucesso" element={<Sucesso />} />
+          <Route path="success" element={<Sucesso />} />
+          <Route path="cancel" element={<Cancel />} />
         </Route>
 
         {/* rotas protegidas */}
