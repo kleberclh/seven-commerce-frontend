@@ -89,6 +89,11 @@ export default function DashboardLayout() {
             Sair
           </Button>
         </div>
+        <div>
+          <Button className="border bg-blue-700 text-white py-1 px-5 rounded-lg hover:bg-red-600">
+            <a href="/">Home</a>
+          </Button>
+        </div>
       </aside>
 
       {/* Conteúdo Principal */}
