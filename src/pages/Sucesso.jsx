@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -8,11 +7,13 @@ export default function Success() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    clearCart(); // Limpa o carrinho após a compra bem-sucedida
-    setTimeout(() => {
+    clearCart(); // Agora limpa o carrinho corretamente
+    const timer = setTimeout(() => {
       navigate("/"); // Redireciona para a Home após 5 segundos
     }, 5000);
-  }, []);
+
+    return () => clearTimeout(timer); // Limpa o timeout ao desmontar
+  }, []); // ⚠️ Remove `clearCart` das dependências para evitar loop infinito
 
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">

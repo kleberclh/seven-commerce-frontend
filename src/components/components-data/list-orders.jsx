@@ -48,6 +48,9 @@ export default function ListOrders() {
                   Total (R$)
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold uppercase">
                   Ver Detalhes
                 </th>
               </tr>
@@ -67,6 +70,9 @@ export default function ListOrders() {
                   </td>
                   <td className="px-6 py-4 text-green-600 font-semibold">
                     R$ {order.total.toFixed(2)}
+                  </td>
+                  <td className="px-6 py-4 text-gray-900 font-medium">
+                    {order.status}
                   </td>
                   <td className="px-6 py-4 text-gray-600">
                     <button
