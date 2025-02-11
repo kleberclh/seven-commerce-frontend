@@ -44,6 +44,47 @@ export default function Perfil() {
               <strong className="text-lg">UUID:</strong>
               <span>{user.uuid}</span>
             </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">CPF:</strong>
+              <span>{user.cpf}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Telefone:</strong>
+              <span>{user.telefone}</span>
+            </div>
+            <div>
+              <h3 className=" text-2xl font-bold text-center text-indigo-600">
+                Endereço de entrega
+              </h3>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">País:</strong>
+              <span>{user.pais}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Estado:</strong>
+              <span>{user.estado}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Cidade:</strong>
+              <span>{user.cidade}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Bairro:</strong>
+              <span>{user.bairro}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Rua:</strong>
+              <span>{user.rua}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Número:</strong>
+              <span>{user.numero}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <strong className="text-lg">Complemento:</strong>
+              <span>{user.complemento}</span>
+            </div>
           </div>
 
           {/* Botão exibido apenas para admins */}
@@ -55,6 +96,11 @@ export default function Perfil() {
             </div>
           )}
 
+          <div className="mt-4 text-center">
+            <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+              <a href="/meus-pedidos">Acessar Meus Pedidos</a>
+            </button>
+          </div>
           <div className="mt-4 text-center">
             <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
               Atualizar Perfil

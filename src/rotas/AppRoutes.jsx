@@ -26,6 +26,7 @@ export default function AppRoutes() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="success" element={<Sucesso />} />
           <Route path="cancel" element={<Cancel />} />
+          <Route path="meus-pedidos" element={<Cancel />} />
         </Route>
 
         {/* rotas protegidas */}
