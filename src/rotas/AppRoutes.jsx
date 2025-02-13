@@ -11,6 +11,7 @@ import Perfil from "../pages/Perfil";
 import Checkout from "../pages/Checkout";
 import Sucesso from "../pages/Sucesso";
 import Cancel from "../pages/Cancel";
+import Pedidos from "../pages/Pedidos";
 
 export default function AppRoutes() {
   return (
@@ -26,6 +27,8 @@ export default function AppRoutes() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="success" element={<Sucesso />} />
           <Route path="cancel" element={<Cancel />} />
+          <Route path="meus-pedidos" element={<Pedidos />} />
+          <Route path="ver-detalhes/:uuid" element={<Pedidos />} />
         </Route>
 
         {/* rotas protegidas */}
