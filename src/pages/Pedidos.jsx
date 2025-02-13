@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importando useNavigate
-import api from "../../api/axios";
+import api from "../api/axios";
 
-export default function ListOrders() {
+export default function Pedidos() {
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate(); // Criando a função de navegação
 
@@ -12,9 +12,10 @@ export default function ListOrders() {
 
   const fetchOrders = () => {
     api
-      .get("/order")
+      .get("/me")
       .then((response) => {
-        setOrders(response.data.data);
+        console.log(response.data.name);
+        setOrders(response.data.pedidos);
       })
       .catch((error) => {
         console.error("Erro ao buscar as ordens:", error);
@@ -22,7 +23,7 @@ export default function ListOrders() {
   };
 
   const handleView = (uuid) => {
-    navigate(`/auth/ver-detalhes/${uuid}`); // Redireciona para a página de detalhes do pedido
+    navigate(`/ver-detalhes/${uuid}`); // Redireciona para a página de detalhes do pedido
   };
 
   return (
@@ -65,9 +66,7 @@ export default function ListOrders() {
                   <td className="px-6 py-4 text-gray-900 font-medium">
                     {order.usuarioId}
                   </td>
-                  <td className="px-6 py-4 text-gray-700">
-                    {order.usuario.name}
-                  </td>
+                  <td className="px-6 py-4 text-gray-700">{order.name}</td>
                   <td className="px-6 py-4 text-green-600 font-semibold">
                     R$ {order.total.toFixed(2)}
                   </td>
