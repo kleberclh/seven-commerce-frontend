@@ -11,6 +11,7 @@ export const useUser = () => {
       try {
         const response = await api.get("/me"); // Rota que retorna os dados do usuário
         setUser(response.data);
+        console.log(response.data);
       } catch (err) {
         setError("Realize o login para ter acesso ao seu perfil!");
       } finally {

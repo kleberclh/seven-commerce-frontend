@@ -8,7 +8,7 @@ export default function Produtos() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/produtos")
+      .get("http://localhost:5050/produtos")
       .then((response) => {
         if (response.data.success && Array.isArray(response.data.produto)) {
           setProducts(response.data.produto);
