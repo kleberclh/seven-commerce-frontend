@@ -12,7 +12,7 @@ const CheckoutButton = ({ produtos }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/stripe/checkout",
+        "http://localhost:5050/stripe/checkout",
         {
           produtos: produtos.map((item) => ({
             produtoId: item.id,
