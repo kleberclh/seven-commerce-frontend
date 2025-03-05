@@ -77,11 +77,11 @@ Meus pedidos
 Dashboard principal
 ![image](https://github.com/user-attachments/assets/05028241-1bae-40d6-aded-95f9809874b4)
 
-Produtos
-![image](https://github.com/user-attachments/assets/6f47b1b2-16e5-422a-8e6b-c095eea636ad)
-
 Clientes
 ![image](https://github.com/user-attachments/assets/86e0bf43-73f9-49c6-a43a-5e7b2ad9b3dd)
+
+Produtos
+![image](https://github.com/user-attachments/assets/6f47b1b2-16e5-422a-8e6b-c095eea636ad)
 
 Vendas realizadas
 ![image](https://github.com/user-attachments/assets/e40f68ba-76ae-49f8-b490-9a75874fd3d7)
